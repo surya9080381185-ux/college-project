@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to QR Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Intro Overlay -->
+    <div id="intro-overlay">
+        <div class="intro-content">
+            <h1 class="intro-logo">QR ZEN PRO</h1>
+            <p class="intro-subtitle">Initialize Experience...</p>
+            <div class="loading-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <header class="app-header">
+            <h1>QR Generator</h1>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <!-- Upload & Input Section -->
+            <div class="input-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="image">Upload Image</button>
+                    <button class="tab-btn" data-tab="text">Enter Text / URL</button>
+                </div>
+
+                <div class="upload-section active-tab-content" id="imageMode">
+                    <form id="uploadForm">
+                        <div class="file-drop-area" id="dropArea">
+                            <span class="file-icon">📁</span>
+                            <span class="file-msg">Upload Images</span>
+                            <input class="file-input" type="file" name="images" id="fileInput" accept="image/*"
+                                multiple>
+                        </div>
+                        <div class="password-container" style="margin-top: 15px;">
+                            <input type="password" id="passwordInput" placeholder="Optional: Set a password"
+                                style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.1); color: white;">
+                        </div>
+                        <div id="fileName" class="file-name"
+                            style="color: white; margin-top: 10px; text-align: center; min-height: 20px;"></div>
+                        <button type="submit" class="btn-primary" id="generateBtn"
+                            style="width: 100%; margin-top: 15px;">GENERATE CARD</button>
+                    </form>
+                </div>
+
+                <div class="upload-section" id="textMode" style="display: none;">
+                    <form id="textForm">
+                        <textarea id="textInput" placeholder="Enter your website URL or any text here..."
+                            spellcheck="false"></textarea>
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 15px;">GENERATE
+                            CARD</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+            </div>
+            <div id="errorMsg" class="error-msg hidden"></div>
+
+            <!-- Result Section (The Card) -->
+            <div class="result-section hidden" id="resultSection">
+                <div class="scan-me-card">
+                    <!-- Top Right Curve -->
+                    <div class="curve-top-right"></div>
+                    <!-- Bottom Left Curve -->
+                    <div class="curve-bottom-left"></div>
+
+                    <div class="card-body">
+                        <!-- Vertical Text Left -->
+                        <div class="vertical-text">
+                            <span>SCAN ME!</span>
+                            <span class="subtitle">TO VIEW OUR WEBSITE</span>
+                        </div>
+
+                        <!-- QR Code Frame -->
+                        <div class="qr-frame">
+                            <div class="corner-marker top-left"></div>
+                            <div class="corner-marker top-right"></div>
+                            <div class="corner-marker bottom-left"></div>
+                            <div class="corner-marker bottom-right"></div>
+
+                            <!-- The QR Code Image -->
+                            <div class="qr-code-wrapper">
+                                <img id="qrImage" src="" alt="QR Code">
+                                <div class="qr-overlay-text">QR<br>Code<br>HERE</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Text -->
+                    <div class="card-footer">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                            class="social-icon" alt="Insta">
+                        <span>@YOURINSTAGRAMNAMEHERE</span>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a id="downloadLink" href="#" download="qrcode.png" class="btn-primary">Download</a>
+                    <button id="resetBtn" class="btn-text">Create New</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

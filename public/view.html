@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="view.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="gallery-container">
+        <header>
+            <h1>Shared Images</h1>
+        </header>
+
+        <div id="loading" class="loading">Loading images...</div>
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="grid" class="grid">
+            <!-- Images will be injected here -->
+        </div>
+
+        <!-- Password Modal -->
+        <div id="passwordModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Password Required</h2>
+                <p>This album is protected.</p>
+                <input type="password" id="modalPasswordInput" placeholder="Enter Password" class="password-input">
+                <button id="submitPasswordBtn" class="btn-primary">Submit</button>
+                <p id="passwordError" class="error-msg" style="display: none;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="view.js"></script>
+</body>
+
+</html>

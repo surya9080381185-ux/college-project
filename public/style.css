@@ -1,0 +1,599 @@
+:root {
+    --neon-pink: #ff007f;
+    --dark-bg: #121212;
+    --card-bg: #1a1a1a;
+    --text-white: #ffffff;
+    --text-pink: #ff007f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--dark-bg);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232c2c2c' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+    color: var(--text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 600px;
+    /* Slightly wider to fit the card layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.app-header h1 {
+    color: var(--text-white);
+    margin-bottom: 0;
+    /* Removed bottom margin */
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: left;
+    /* Changed to left */
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+}
+
+/* Upload Section Styling */
+.upload-section {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Tabs Styling */
+.input-container {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-white);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.tab-btn.active {
+    background: var(--neon-pink);
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Text Input Styling */
+#textInput {
+    width: 100%;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#textInput:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+.file-drop-area {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed var(--neon-pink);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.file-drop-area:hover {
+    background: rgba(255, 0, 127, 0.1);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+.file-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.file-msg {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* SCAN ME Card Layout */
+.scan-me-card {
+    background-color: #0b1120;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1/1;
+    /* Keep it square-ish like the image */
+    position: relative;
+    padding: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Only show when generated */
+    animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-header {
+    text-align: center;
+    color: var(--neon-pink);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.card-body {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Vertical Text */
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    color: var(--neon-pink);
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1;
+    margin-right: 20px;
+    text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+    display: flex;
+    align-items: center;
+}
+
+.vertical-text span {
+    display: inline-block;
+}
+
+.vertical-text .subtitle {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    /* Appears as margin-top when rotated */
+    color: var(--text-white);
+    opacity: 0.8;
+}
+
+/* QR Code Frame */
+.qr-frame {
+    position: relative;
+    padding: 15px;
+    border: 2px solid #333;
+    /* Very subtle border around the QR area */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    /* White background for QR readability */
+}
+
+.qr-code-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+#qrImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.qr-overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    color: var(--neon-pink);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    /* Only simple text overlay, might obscure specific QR codes if too big, but requested in design */
+    display: none;
+    /* Hiding for functionality safety unless guaranteed error correction level is high */
+}
+
+/* Decorative Corners for QR Frame */
+.qr-frame::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid transparent;
+    /* Placeholder for outer brackets if needed */
+}
+
+/* Corner Markers (The thin pink lines around QR) */
+.corner-marker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #333;
+    /* Dark markers as per image, or pink? Image looks dark grey/black thin lines */
+    border-style: solid;
+    border-width: 0;
+}
+
+.top-left {
+    top: -5px;
+    left: -5px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.top-right {
+    top: -5px;
+    right: -5px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bottom-left {
+    bottom: -5px;
+    left: -5px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.bottom-right {
+    bottom: -5px;
+    right: -5px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+
+/* Pink Curves */
+.curve-top-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background-color: var(--neon-pink);
+    border-bottom-left-radius: 100%;
+}
+
+.curve-bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-color: var(--neon-pink);
+    border-top-right-radius: 100%;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 15px;
+    z-index: 2;
+    /* Above curve */
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    filter: invert(1);
+    /* Make generic icon white */
+}
+
+.card-footer span {
+    color: var(--neon-pink);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Actions */
+.actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-primary {
+    background: var(--neon-pink);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6);
+}
+
+.btn-text {
+    margin-top: 15px;
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-text:hover {
+    color: #999;
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+.loading .spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: var(--neon-pink);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .scan-me-card {
+        padding: 15px;
+    }
+
+    .vertical-text {
+        font-size: 2.5rem;
+    }
+
+    .qr-code-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    .qr-code-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Intro Overlay Styles */
+#intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+
+#intro-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-content {
+    text-align: center;
+    animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.intro-logo {
+    font-size: 4rem;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon-pink);
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+}
+
+.intro-logo::before {
+    content: 'QR ZEN PRO';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: var(--neon-pink);
+    overflow: hidden;
+    border-right: 4px solid var(--neon-pink);
+    animation: typing 2s steps(12) forwards, blink 0.75s step-end infinite;
+}
+
+.intro-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-white);
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 1s forwards;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading-bar .progress {
+    width: 0%;
+    height: 100%;
+    background: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink);
+    animation: loadProgress 2.5s ease-in-out forwards;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--neon-pink);
+    }
+}
+
+@keyframes loadProgress {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 60%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
